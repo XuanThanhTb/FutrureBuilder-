@@ -34,7 +34,7 @@ class FutureBuilderAppState extends State<FutureBuilderApp>{
       final result = jsonData.values;
       // debugger();
       for(var item in result){
-        var user = Users.fromJson(item);
+        Users user = Users(item['name'], item['region'], item['country'], item['lat'], item['lon'], item['localtime']);
         // debugger();
         users.add(user);
         print(users.length);
@@ -64,7 +64,7 @@ class FutureBuilderAppState extends State<FutureBuilderApp>{
               itemCount: snapshot.data.length,
               itemBuilder: (BuildContext context, int index){
                 return Column(
-                  mainAxisSize: MainAxisSize.max,
+                  mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Text(snapshot.data[index].name),
@@ -110,8 +110,8 @@ class Users{
   // final String picture;
   // Users(this.index, this.about, this.name, this.email, this.picture);
   Users(this.name, this.region, this.country, this.lat, this.lon, this.localtime);
-  Users.fromJson(Map<String, dynamic> json) : 
-    name = json['name'], region = json['region'], 
-    country = json['country'], lat = json['lat'], 
-    lon = json['lon'], localtime = json['localtime'];
+  // Users.fromJson(Map<String, dynamic> json) : 
+  //   name = json['name'], region = json['region'], 
+  //   country = json['country'], lat = json['lat'], 
+  //   lon = json['lon'], localtime = json['localtime'];
 }
